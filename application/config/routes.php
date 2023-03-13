@@ -98,7 +98,7 @@ $route['manage-performance'] = 'performance';
 
 //training routes
 $route['manage-trainees'] = 'training';
-// $route['manage-trainees'] = 'training/manage';
+$route['manage-trainees'] = 'training/manage';
 // $route['insert-trainees'] = 'trainees/insert';
 // $route['delete-trainees/(:num)'] = 'trainees/delete/$1';
 // $route['edit-trainees/(:num)'] = 'trainees/edit/$1';

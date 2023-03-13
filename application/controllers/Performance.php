@@ -14,10 +14,10 @@ class Performance extends CI_Controller {
 
     public function index()
     {
-        // $data['content']=$this->Training_model->select_staff();
+        $data['content']=$this->Performance_model->select_staff();
         $this->load->view('admin/header');
-        // $this->load->view('admin/manage-trainees',$data);
-        $this->load->view('admin/manage-performance');
+        $this->load->view('admin/manage-performance',$data);
+        // $this->load->view('admin/manage-performance');
         $this->load->view('admin/footer');
     }
 

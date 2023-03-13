@@ -14,21 +14,22 @@ class Training extends CI_Controller {
 
     public function index()
     {
-        // $data['content']=$this->Training_model->select_staff();
+        $data['department']=$this->Department_model->select_departments();
+        $data['country']=$this->Home_model->select_countries();
         $this->load->view('admin/header');
-        // $this->load->view('admin/manage-trainees',$data);
-        $this->load->view('admin/manage-trainees');
+        $this->load->view('admin/manage-trainees',$data);
+        // $this->load->view('admin/manage-trainees');
         $this->load->view('admin/footer');
     }
 
-    // public function manage()
-    // {
-    //     // $data['content']=$this->Training_model->select_staff();
-    //     $this->load->view('admin/header');
-    //     // $this->load->view('admin/manage-trainees',$data);
-    //     $this->load->view('admin/manage-trainees');
-    //     $this->load->view('admin/footer');
-    // }
+    public function manage()
+    {
+        $data['content']=$this->Training_model->select_staff();
+        $this->load->view('admin/header');
+        $this->load->view('admin/manage-trainees',$data);
+        // $this->load->view('admin/manage-trainees');
+        $this->load->view('admin/footer');
+    }
 
     // public function insert()
     // {

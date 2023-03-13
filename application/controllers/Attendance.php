@@ -14,10 +14,10 @@ class Attendance extends CI_Controller {
 
     public function index()
     {
-        // $data['content']=$this->Training_model->select_staff();
+        $data['content']=$this->Attendance_model->select_staff();
         $this->load->view('admin/header');
-        // $this->load->view('admin/manage-trainees',$data);
-        $this->load->view('admin/manage-attendance');
+        $this->load->view('admin/manage-attendance',$data);
+        // $this->load->view('admin/manage-attendance');
         $this->load->view('admin/footer');
     }
 
