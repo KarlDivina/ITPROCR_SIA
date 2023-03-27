@@ -81,8 +81,8 @@ $route['print-invoice/(:num)'] = 'salary/invoice_print/$1';
 $route['delete-salary/(:num)'] = 'salary/delete/$1';
 
 //attendance routes
-$route['manage-attendance'] = 'attendance';
-$route['view-attendance'] = 'attendance/index_view';
+$route['view-attendance-staff'] = 'attendance';
+$route['view-attendance'] = 'attendance/index';
 // $route['manage-staff'] = 'staff/manage';
 // $route['insert-staff'] = 'staff/insert';
 // $route['delete-staff/(:num)'] = 'staff/delete/$1';

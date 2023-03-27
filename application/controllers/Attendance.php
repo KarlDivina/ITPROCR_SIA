@@ -14,21 +14,21 @@ class Attendance extends CI_Controller {
 
     public function index()
     {
-        $data['content']=$this->Attendance_model->select_staff();
-        $this->load->view('admin/header');
-        $this->load->view('admin/manage-attendance',$data);
+        $data['content']=$this->Leave_model->select_leave();
+        $this->load->view('staff/header');
+        $this->load->view('staff/view-attendance',$data);
         // $this->load->view('admin/manage-attendance');
-        $this->load->view('admin/footer');
+        $this->load->view('staff/footer');
     }
 
     public function index_view()
     {
         $data['content']=$this->Leave_model->select_leave();
-        $this->load->view('staff/header');
+        $this->load->view('admin/header');
         // $this->load->view('admin/manage-attendance',$data);
-        $this->load->view('staff/view-attendance',$data);
+        $this->load->view('admin/view-attendance',$data);
         // $this->load->view('admin/manage-attendance');
-        $this->load->view('staff/footer');
+        $this->load->view('admin/footer');
     }
 
     // public function manage()

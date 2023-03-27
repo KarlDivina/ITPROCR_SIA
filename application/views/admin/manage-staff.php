@@ -51,6 +51,7 @@
                     <th>Department</th>
                     <th>Job Title</th>
                     <th>Job Description</th>
+                    <th>Skills Matrix</th>
                     <th>Leave Credits</th>
                     <th>Gender</th>
                     <th>Mobile</th>
@@ -77,6 +78,7 @@
                         <td><?php echo $cnt['department_name']; ?></td>
                         <td><?php echo $cnt['job_title']; ?></td>
                         <td><?php echo $cnt['job_description']; ?></td>
+                        <td><?php echo $cnt['skills_matrix']; ?></td>
                         <td><?php echo $cnt['leave_credits']; ?></td>
                         <td><?php echo $cnt['gender']; ?></td>
                         <td><?php echo $cnt['mobile']; ?></td>
