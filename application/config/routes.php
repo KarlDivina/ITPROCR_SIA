@@ -82,6 +82,7 @@ $route['delete-salary/(:num)'] = 'salary/delete/$1';
 
 //attendance routes
 $route['manage-attendance'] = 'attendance';
+$route['view-attendance'] = 'attendance/index_view';
 // $route['manage-staff'] = 'staff/manage';
 // $route['insert-staff'] = 'staff/insert';
 // $route['delete-staff/(:num)'] = 'staff/delete/$1';
@@ -108,7 +109,7 @@ $route['manage-trainees'] = 'training/manage';
 $route['apply-leave'] = 'leave';
 $route['approve-leave'] = 'leave/approve';
 $route['leave-history'] = 'leave/manage';
-$route['leave-approved/(:num)'] = 'leave/insert_approve/$1';
+$route['leave-approved/(:num)/(:num)/(:num)'] = 'leave/insert_approve/$1/$2/$3';
 $route['leave-rejected/(:num)'] = 'leave/insert_reject/$1';
 $route['view-leave'] = 'leave/view';
 $route['salaryinvoice/(:num)'] = 'salary/invoicestaff/$1';

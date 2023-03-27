@@ -45,9 +45,9 @@ class Leave extends CI_Controller {
         $this->load->view('staff/footer');
     }
 
-    public function insert_approve($id)
+    public function insert_approve($id, $staffID, $credits)
     {
-        $data=$this->Leave_model->update_leave(array('status'=>1),$id);
+        $data=$this->Leave_model->update_leave(array('status'=>1),$id, array('leave_credits'=>$credits-1), $staffID);
         if($this->db->affected_rows() > 0)
         {
             $this->session->set_flashdata('success', "Leave Approved Succesfully"); 

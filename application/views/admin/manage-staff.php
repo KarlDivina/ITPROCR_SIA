@@ -49,6 +49,9 @@
                     <th>Name</th>
                     <th>Photo</th>
                     <th>Department</th>
+                    <th>Job Title</th>
+                    <th>Job Description</th>
+                    <th>Leave Credits</th>
                     <th>Gender</th>
                     <th>Mobile</th>
                     <th>Email</th>
@@ -72,6 +75,9 @@
                         <td><?php echo $cnt['staff_name']; ?></td>
                         <td><img src="<?php echo base_url(); ?>uploads/profile-pic/<?php echo $cnt['pic'] ?>" class="img-circle" width="50px" alt="User Image"></td>
                         <td><?php echo $cnt['department_name']; ?></td>
+                        <td><?php echo $cnt['job_title']; ?></td>
+                        <td><?php echo $cnt['job_description']; ?></td>
+                        <td><?php echo $cnt['leave_credits']; ?></td>
                         <td><?php echo $cnt['gender']; ?></td>
                         <td><?php echo $cnt['mobile']; ?></td>
                         <td><?php echo $cnt['email']; ?></td>

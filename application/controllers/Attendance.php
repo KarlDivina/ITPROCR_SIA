@@ -21,6 +21,16 @@ class Attendance extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
+    public function index_view()
+    {
+        $data['content']=$this->Leave_model->select_leave();
+        $this->load->view('staff/header');
+        // $this->load->view('admin/manage-attendance',$data);
+        $this->load->view('staff/view-attendance',$data);
+        // $this->load->view('admin/manage-attendance');
+        $this->load->view('staff/footer');
+    }
+
     // public function manage()
     // {
     //     // $data['content']=$this->Training_model->select_staff();

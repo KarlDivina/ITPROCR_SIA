@@ -142,7 +142,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url(); ?>view-salary"><i class="fa fa-circle-o"></i> View Attendance</a></li>
+            <li><a href="<?php echo base_url(); ?>view-attendance"><i class="fa fa-circle-o"></i> View Attendance</a></li>
           </ul>
         </li>
 

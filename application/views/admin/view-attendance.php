@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Training Tracking
+        Attendance Management
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Training Tracking</a></li>
-        <li class="active">Manage Trainees</li>
+        <li><a href="#">Attendance Management</a></li>
+        <li class="active">View Leave</li>
       </ol>
     </section>
 
@@ -37,7 +37,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <h3 class="box-title">Manage Trainees</h3>
+              <h3 class="box-title">View Attendance</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -46,14 +46,12 @@
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Photo</th>
-                    <th>Department</th>
+                    <th>Reason</th>
+                    <th>From</th>
+                    <th>To</th>
                     <th>Status</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Joined On</th>
-                    <th>Actions</th>
+                    <th>Description</th>
+                    <th>Applied On</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -64,24 +62,26 @@
                   ?>
                       <tr>
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $cnt['staff_name']; ?></td>
-                        <td><img src="<?php echo base_url(); ?>uploads/profile-pic/<?php echo $cnt['pic'] ?>" class="img-circle" width="50px" alt="User Image"></td>
-                        <td><?php echo $cnt['department_name']; ?></td>
-                        <td><?php echo $cnt['employment_status']; ?></td>
-                        <td><?php echo $cnt['mobile']; ?></td>
-                        <td><?php echo $cnt['email']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['doj'])); ?></td>
+                        <td><?php echo $cnt['leave_reason']; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_from'])); ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_to'])); ?></td>
                         <td>
-                          <a href="<?php echo base_url(); ?>edit-staff/<?php echo $cnt['id']; ?>" class="btn btn-success">Edit</a>
-                          <a href="<?php echo base_url(); ?>delete-staff/<?php echo $cnt['id']; ?>" class="btn btn-danger">Delete</a>
+                          <?php if($cnt['status']==0): ?>
+                          <span class="label label-info">Pending</span>
+                          <?php elseif($cnt['status']==1): ?>
+                          <span class="label label-success">Approved</span>
+                          <?php elseif($cnt['status']==2): ?>
+                          <span class="label label-danger">Rejected</span>
+                          <?php endif; ?>
                         </td>
+                        <td><?php echo $cnt['description']; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($cnt['applied_on'])); ?></td>
                       </tr>
                     <?php 
                       $i++;
                       endforeach;
                       endif; 
-                    ?>
-                  
+                    ?> 
                   </tbody>
                 </table>
               </div>
