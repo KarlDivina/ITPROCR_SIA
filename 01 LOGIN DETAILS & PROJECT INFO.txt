@@ -16,3 +16,13 @@ Password: password0101
 
 Email	: liam@gmail.com
 Password: 7410233333
+
+1 = HR = 2
+2 = BackEnd = 3, 6, 8
+3 = Designing = 4
+4 = FrontEnd = 5
+5 = Marketing = 7
+6 = Finance = 9
+
+reimbursements
+travel expenses

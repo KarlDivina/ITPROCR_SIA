@@ -113,3 +113,11 @@ $route['leave-approved/(:num)/(:num)/(:num)'] = 'leave/insert_approve/$1/$2/$3';
 $route['leave-rejected/(:num)'] = 'leave/insert_reject/$1';
 $route['view-leave'] = 'leave/view';
 $route['salaryinvoice/(:num)'] = 'salary/invoicestaff/$1';
+
+//reimbursements routes
+$route['reimbursement-history'] = 'reimbursement';
+$route['approve-reimbursements'] = 'reimbursement/approve';
+$route['view-reimbursements'] = 'reimbursement/view';
+$route['apply-reimbursement'] = 'reimbursement/apply';
+
+//travel expenses routes

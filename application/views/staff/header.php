@@ -159,6 +159,19 @@
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Travel Expenses</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url(); ?>apply-reimbursement"><i class="fa fa-circle-o"></i> Apply Expense</a></li>
+            <li><a href="<?php echo base_url(); ?>view-reimbursements"><i class="fa fa-circle-o"></i> My Expenses</a></li>
+          </ul>
+        </li>
+
 
       </ul>
     </section>
