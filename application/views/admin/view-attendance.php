@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Attendance Management</a></li>
-        <li class="active">View Leave</li>
+        <li class="active">View Attendance</li>
       </ol>
     </section>
 
@@ -45,13 +45,13 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Reason</th>
-                    <th>From</th>
-                    <th>To</th>
+                    <th>Staff ID</th>
+                    <th>Employee Name</th>
+                    <th>Time In</th>
+                    <th>Time Out</th>
                     <th>Status</th>
-                    <th>Description</th>
-                    <th>Applied On</th>
+                    <th>Job</th>
+                    <th>Department</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -61,21 +61,21 @@
                     foreach($content as $cnt): 
                   ?>
                       <tr>
-                        <td><?php echo $i; ?></td>
-                        <td><?php echo $cnt['leave_reason']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_from'])); ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_to'])); ?></td>
+                        <td><?php echo $cnt['staff_id']; ?></td>
+                        <td><?php echo $cnt['staff_name']; ?></td>
+                        <td><?php echo $cnt['time_in']; ?></td>
+                        <td><?php echo $cnt['time_out']; ?></td>
                         <td>
                           <?php if($cnt['status']==0): ?>
-                          <span class="label label-info">Pending</span>
+                          <span class="label label-info">Day Off</span>
                           <?php elseif($cnt['status']==1): ?>
-                          <span class="label label-success">Approved</span>
+                          <span class="label label-success">Online</span>
                           <?php elseif($cnt['status']==2): ?>
-                          <span class="label label-danger">Rejected</span>
+                          <span class="label label-danger">Offline</span>
                           <?php endif; ?>
                         </td>
-                        <td><?php echo $cnt['description']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['applied_on'])); ?></td>
+                        <td><?php echo $cnt['job_title']; ?></td>
+                        <td><?php echo $cnt['department_name']; ?></td>
                       </tr>
                     <?php 
                       $i++;

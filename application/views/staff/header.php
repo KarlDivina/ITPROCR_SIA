@@ -148,7 +148,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Leave</span>
+            <i class="fa fa-leaf"></i> <span>Leave</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -161,7 +161,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Travel Expenses</span>
+            <i class="fa fa-plane"></i> <span>Travel Expenses</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

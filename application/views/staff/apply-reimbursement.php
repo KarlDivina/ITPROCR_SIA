@@ -49,7 +49,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <?php echo form_open('Leave/insert'); ?>
+            <?php echo form_open('Reimbursements/insert'); ?>
               <div class="box-body">
                
                 <div class="col-md-6">
@@ -61,26 +61,10 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Leave From</label>
-                    <input type="date" name="txtleavefrom" class="form-control">
+                    <label for="exampleInputPassword1">Amount</label>
+                    <input type="text" name="txt_amount" class="form-control">
                   </div>
                 </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Leave To</label>
-                    <input type="date" name="txtleaveto" class="form-control">
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Description</label>
-                    <textarea name="txtdescription" class="form-control" placeholder="Description"></textarea>
-                  </div>
-                </div>
-
-                
                 
               </div>
               <!-- /.box-body -->

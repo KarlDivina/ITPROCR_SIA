@@ -25,6 +25,41 @@ class Leave_model extends CI_Model {
         }
     }
 
+    function select_attendance()
+    {
+        $this->db->order_by('staff_tbl.id','DESC');
+        $this->db->select("leave_tbl.*,staff_tbl.pic,staff_tbl.staff_name,staff_tbl.city,staff_tbl.state,staff_tbl.country,staff_tbl.mobile,staff_tbl.job_title,staff_tbl.email,department_tbl.department_name");
+        $this->db->from("leave_tbl");
+        $this->db->join("staff_tbl",'staff_tbl.id=leave_tbl.staff_id');
+        $this->db->join("department_tbl",'department_tbl.id=staff_tbl.department_id');
+        $this->db->group_by('staff_tbl.id');
+        $this->db->distinct();
+        $qry=$this->db->get();
+        if($qry->num_rows()>0)
+        {
+            $result=$qry->result_array();
+            return $result;
+        }
+    }
+
+    function select_attendance_byStaff($id)
+    {
+        $this->db->order_by('staff_tbl.id','DESC');
+        $this->db->select("leave_tbl.*,staff_tbl.pic,staff_tbl.staff_name,staff_tbl.city,staff_tbl.state,staff_tbl.country,staff_tbl.mobile,staff_tbl.job_title,staff_tbl.email,department_tbl.department_name");
+        $this->db->from("leave_tbl");
+        $this->db->where("staff_tbl.id", $id);
+        $this->db->join("staff_tbl",'staff_tbl.id=leave_tbl.staff_id');
+        $this->db->join("department_tbl",'department_tbl.id=staff_tbl.department_id');
+        $this->db->group_by('staff_tbl.id');
+        $this->db->distinct();
+        $qry=$this->db->get();
+        if($qry->num_rows()>0)
+        {
+            $result=$qry->result_array();
+            return $result;
+        }
+    }
+
     function select_department_byID($id)
     {
 

@@ -37,7 +37,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
-              <h3 class="box-title">View Leave</h3>
+              <h3 class="box-title">View Travel Expenses</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,11 +47,11 @@
                   <tr>
                     <th>#</th>
                     <th>Reason</th>
-                    <th>From</th>
-                    <th>To</th>
+                    <th>Amount</th>
+                    <th>Staff ID</th>
                     <th>Status</th>
-                    <th>Description</th>
                     <th>Applied On</th>
+                    <th>Updated On</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -62,9 +62,9 @@
                   ?>
                       <tr>
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $cnt['leave_reason']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_from'])); ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['leave_to'])); ?></td>
+                        <td><?php echo $cnt['reason']; ?></td>
+                        <td><?php echo '$' . $cnt['amount']; ?></td>
+                        <td><?php echo $cnt['staff_id']; ?></td>
                         <td>
                           <?php if($cnt['status']==0): ?>
                           <span class="label label-info">Pending</span>
@@ -74,8 +74,8 @@
                           <span class="label label-danger">Rejected</span>
                           <?php endif; ?>
                         </td>
-                        <td><?php echo $cnt['description']; ?></td>
                         <td><?php echo date('d-m-Y', strtotime($cnt['applied_on'])); ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($cnt['updated_on'])); ?></td>
                       </tr>
                     <?php 
                       $i++;

@@ -4,18 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Reimbursements_model extends CI_Model {
 
 
-    function insert_leave($data)
+    function insert_reimbursement($data)
     {
-        $this->db->insert("leave_tbl",$data);
+        $this->db->insert("reimbursements_tbl",$data);
         return $this->db->insert_id();
     }
 
-    function select_leave()
+    function select_reimbursements()
     {
-        $this->db->order_by('leave_tbl.id','DESC');
-        $this->db->select("leave_tbl.*,staff_tbl.pic,staff_tbl.staff_name,staff_tbl.city,staff_tbl.state,staff_tbl.country,staff_tbl.mobile,staff_tbl.email,department_tbl.department_name");
-        $this->db->from("leave_tbl");
-        $this->db->join("staff_tbl",'staff_tbl.id=leave_tbl.staff_id');
+        $this->db->order_by('reimbursements_tbl.id','DESC');
+        $this->db->select("reimbursements_tbl.*,staff_tbl.pic,staff_tbl.staff_name,staff_tbl.email,department_tbl.department_name");
+        $this->db->from("reimbursements_tbl");
+        $this->db->join("staff_tbl",'staff_tbl.id=reimbursements_tbl.staff_id');
         $this->db->join("department_tbl",'department_tbl.id=staff_tbl.department_id');
         $qry=$this->db->get();
         if($qry->num_rows()>0)
@@ -37,13 +37,13 @@ class Reimbursements_model extends CI_Model {
         }
     }
 
-    function select_leave_byStaffID($staffid)
+    function select_reimbursement_byStaffID($staffid)
     {
-        $this->db->order_by('leave_tbl.id','DESC');
-        $this->db->where('leave_tbl.staff_id',$staffid);
-        $this->db->select("leave_tbl.*,staff_tbl.staff_name,staff_tbl.city,staff_tbl.state,staff_tbl.country,staff_tbl.mobile,staff_tbl.email,department_tbl.department_name");
-        $this->db->from("leave_tbl");
-        $this->db->join("staff_tbl",'staff_tbl.id=leave_tbl.staff_id');
+        $this->db->order_by('reimbursements_tbl.id','DESC');
+        $this->db->where('reimbursements_tbl.staff_id',$staffid);
+        $this->db->select("reimbursements_tbl.*,staff_tbl.staff_name,department_tbl.department_name");
+        $this->db->from("reimbursements_tbl");
+        $this->db->join("staff_tbl",'staff_tbl.id=reimbursements_tbl.staff_id');
         $this->db->join("department_tbl",'department_tbl.id=staff_tbl.department_id');
         $qry=$this->db->get();
         if($qry->num_rows()>0)
@@ -53,13 +53,14 @@ class Reimbursements_model extends CI_Model {
         }
     }
 
-    function select_leave_forApprove()
+    function select_reimbursement_forApprove()
     {
-        $this->db->where('leave_tbl.status',0);
-        $this->db->select("leave_tbl.*,staff_tbl.pic,staff_tbl.staff_name,staff_tbl.city,staff_tbl.state,staff_tbl.country,staff_tbl.mobile,staff_tbl.email,staff_tbl.leave_credits,department_tbl.department_name");
+        $this->db->where('reimbursements_tbl.status',0);
+        $this->db->select("reimbursements_tbl.*,staff_tbl.pic,staff_tbl.staff_name,reimbursements_tbl.amount,reimbursements_tbl.reason,reimbursements_tbl.applied_on,reimbursements_tbl.updated_on,department_tbl.department_name, salary_tbl.basic_salary, salary_tbl.allowance, salary_tbl.reimbursement, salary_tbl.total");
         $this->db->select("staff_tbl.id as 'staff_id'");
-        $this->db->from("leave_tbl");
-        $this->db->join("staff_tbl",'staff_tbl.id=leave_tbl.staff_id');
+        $this->db->from("reimbursements_tbl");
+        $this->db->join("staff_tbl",'staff_tbl.id=reimbursements_tbl.staff_id');
+        $this->db->join("salary_tbl",'salary_tbl.staff_id=reimbursements_tbl.staff_id');
         $this->db->join("department_tbl",'department_tbl.id=staff_tbl.department_id');
         $qry=$this->db->get();
         if($qry->num_rows()>0)
@@ -78,12 +79,12 @@ class Reimbursements_model extends CI_Model {
 
     
 
-    function update_leave($data,$id, $credits, $staff)
+    function update_reimbursement($data, $id, $amount, $staff)
     {
         $this->db->where('id', $id);
-        $this->db->update('leave_tbl',$data);
-        $this->db->where('id', $staff);
-        $this->db->update('staff_tbl',$credits);
+        $this->db->update('reimbursements_tbl',$data);
+        $this->db->where('staff_id', $staff);
+        $this->db->update('salary_tbl',$amount);
         $this->db->affected_rows();
     }
 

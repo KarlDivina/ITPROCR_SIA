@@ -14,78 +14,84 @@ class Reimbursements extends CI_Controller {
 
     public function index()
     {
+        $data['content']=$this->Reimbursements_model->select_reimbursements();
+        $this->load->view('admin/header');
+        $this->load->view('admin/reimbursements-history', $data);
+        $this->load->view('admin/footer');
+    }
+
+    public function apply()
+    {
         $this->load->view('staff/header');
-        $this->load->view('staff/apply-leave');
+        $this->load->view('staff/apply-reimbursement');
         $this->load->view('staff/footer');
     }
 
     public function approve()
     {
         $staff=$this->session->userdata('userid');
-        $data['content']=$this->Leave_model->select_leave_forApprove();
+        $data['content']=$this->Reimbursements_model->select_reimbursement_forApprove();
         $this->load->view('admin/header');
-        $this->load->view('admin/approve-leave',$data);
+        $this->load->view('admin/approve-reimbursement',$data);
         $this->load->view('admin/footer');
     }
 
     public function manage()
     {
-        $data['content']=$this->Leave_model->select_leave();
         $this->load->view('admin/header');
-        $this->load->view('admin/manage-leave',$data);
+        $this->load->view('admin/manage-leave');
         $this->load->view('admin/footer');
     }
 
     public function view()
     {
         $staff=$this->session->userdata('userid');
-        $data['content']=$this->Leave_model->select_leave_byStaffID($staff);
+        $data['content']=$this->Reimbursements_model->select_reimbursement_byStaffID($staff);
         $this->load->view('staff/header');
-        $this->load->view('staff/view-leave',$data);
+        $this->load->view('staff/view-reimbursements',$data);
         $this->load->view('staff/footer');
     }
 
-    public function insert_approve($id, $staffID, $credits)
+    public function insert_approve($id, $staffID, $amount, $total)
     {
-        $data=$this->Leave_model->update_leave(array('status'=>1),$id, array('leave_credits'=>$credits-1), $staffID);
+        $datenow = date('Y:m:d');
+        $data=$this->Reimbursements_model->update_reimbursement(array('status'=>1, 'updated_on'=>$datenow), $id, array('reimbursement'=>$amount, 'total'=>$total), $staffID);
         if($this->db->affected_rows() > 0)
         {
-            $this->session->set_flashdata('success', "Leave Approved Succesfully"); 
+            $this->session->set_flashdata('success', "Reimbursement Approved Succesfully"); 
         }else{
-            $this->session->set_flashdata('error', "Sorry, Leave Approve Failed.");
+            $this->session->set_flashdata('error', "Sorry, Reimbursement Approve Failed.");
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-    public function insert_reject($id)
+    public function insert_reject($id, $staffID)
     {
-        $data=$this->Leave_model->update_leave(array('status'=>2),$id);
+        $datenow = date('Y:m:d');
+        $data=$this->Reimbursements_model->update_leave(array('status'=>2, 'updated_on'=>$datenow), $id, array('reimbursement'=>0), $staffID);
         if($this->db->affected_rows() > 0)
         {
-            $this->session->set_flashdata('success', "Leave Rejected Succesfully"); 
+            $this->session->set_flashdata('success', "Reimbursement Rejected Succesfully"); 
         }else{
-            $this->session->set_flashdata('error', "Sorry, Leave Reject Failed.");
+            $this->session->set_flashdata('error', "Sorry, Reimbursement Reject Failed.");
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function insert()
     {
-        $this->form_validation->set_rules('txtreason', 'Reasoon', 'required');
-        $this->form_validation->set_rules('txtleavefrom', 'Leave From', 'required');
-        $this->form_validation->set_rules('txtleaveto', 'Leave To', 'required');
+        $this->form_validation->set_rules('txtreason', 'Reason', 'required');
+        $this->form_validation->set_rules('txt_amount', 'Amount', 'required');
 
         $staff=$this->session->userdata('userid');
         $reason=$this->input->post('txtreason');
-        $lfrom=$this->input->post('txtleavefrom');
-        $lto=$this->input->post('txtleaveto');
-        $desc=$this->input->post('txtdescription');
-        $data=$this->Leave_model->insert_leave(array('staff_id'=>$staff,'leave_reason'=>$reason,'leave_from'=>$lfrom,'leave_to'=>$lto,'description'=>$desc,'applied_on'=>date('Y-m-d')));
+        $amount=$this->input->post('txt_amount');
+        $data=$this->Reimbursements_model->insert_reimbursement(array('staff_id'=>$staff,'reason'=>$reason,'amount'=>$amount,'applied_on'=>date('Y-m-d'),'updated_on'=>date('Y-m-d')));
         if($data==true)
         {
-            $this->session->set_flashdata('success', "New Leave Applied Succesfully"); 
+            $this->session->set_flashdata('success', "New Expense Applied Succesfully"); 
         }else{
-            $this->session->set_flashdata('error', "Sorry, New Leave Apply Failed.");
+            $this->session->set_flashdata('error', "Sorry, New Expense Apply Failed.");
         }
         redirect($_SERVER['HTTP_REFERER']);
     }

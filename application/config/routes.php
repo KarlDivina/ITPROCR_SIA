@@ -82,7 +82,7 @@ $route['delete-salary/(:num)'] = 'salary/delete/$1';
 
 //attendance routes
 $route['view-attendance-staff'] = 'attendance';
-$route['view-attendance'] = 'attendance/index';
+$route['view-attendance'] = 'attendance/view';
 // $route['manage-staff'] = 'staff/manage';
 // $route['insert-staff'] = 'staff/insert';
 // $route['delete-staff/(:num)'] = 'staff/delete/$1';
@@ -90,7 +90,9 @@ $route['view-attendance'] = 'attendance/index';
 // $route['update-staff'] = 'staff/update';
 
 //performance routes
-$route['manage-performance'] = 'performance';
+$route['view-performance'] = 'performance';
+$route['edit-performance/(:num)'] = 'performance/edit/$1';
+// $route['edit-performance/(:num)'] = 'performance/update/$1';
 // $route['manage-attendance'] = 'attendance/manage';
 // $route['insert-staff'] = 'staff/insert';
 // $route['delete-staff/(:num)'] = 'staff/delete/$1';
@@ -115,9 +117,11 @@ $route['view-leave'] = 'leave/view';
 $route['salaryinvoice/(:num)'] = 'salary/invoicestaff/$1';
 
 //reimbursements routes
-$route['reimbursement-history'] = 'reimbursement';
-$route['approve-reimbursements'] = 'reimbursement/approve';
-$route['view-reimbursements'] = 'reimbursement/view';
-$route['apply-reimbursement'] = 'reimbursement/apply';
+$route['reimbursements-history'] = 'reimbursements';
+$route['approve-reimbursements'] = 'reimbursements/approve';
+$route['reimbursement-approved/(:num)/(:num)/(:num)/(:num)'] = 'reimbursements/insert_approve/$1/$2/$3/$4';
+$route['reimbursement-rejected/(:num)/(:num)'] = 'reimbursements/insert_reject/$1/$2';
+$route['view-reimbursements'] = 'reimbursements/view';
+$route['apply-reimbursement'] = 'reimbursements/apply';
 
 //travel expenses routes

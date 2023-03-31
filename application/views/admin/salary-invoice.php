@@ -72,6 +72,7 @@
               <th>#</th>
               <th>Basic Salary</th>
               <th>Allowance</th>
+              <th>Reimbursements</th>
               <th>Subtotal</th>
             </tr>
             </thead>
@@ -80,6 +81,7 @@
                 <td>1</td>
                 <td>$ <?php echo $cnt['basic_salary']; ?></td>
                 <td>$ <?php echo $cnt['allowance']; ?></td>
+                <td>$ <?php echo $cnt['reimbursement']; ?></td>
                 <td>$ <?php echo $cnt['total']; ?></td>
               </tr>
             </tbody>

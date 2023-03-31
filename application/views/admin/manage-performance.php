@@ -49,15 +49,12 @@
                     <th>Name</th>
                     <th>Photo</th>
                     <th>Department</th>
-                    <th>Gender</th>
-                    <th>Mobile</th>
                     <th>Email</th>
-                    <th>DOB</th>
+                    <th>Previous Performance Rating</th>
+                    <th>Current Performance Rating</th>
+                    <th>Points for Improvement</th>
+                    <th>Points of Excellence</th>
                     <th>Joined On</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Country</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -72,18 +69,14 @@
                         <td><?php echo $cnt['staff_name']; ?></td>
                         <td><img src="<?php echo base_url(); ?>uploads/profile-pic/<?php echo $cnt['pic'] ?>" class="img-circle" width="50px" alt="User Image"></td>
                         <td><?php echo $cnt['department_name']; ?></td>
-                        <td><?php echo $cnt['gender']; ?></td>
-                        <td><?php echo $cnt['mobile']; ?></td>
                         <td><?php echo $cnt['email']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($cnt['dob'])); ?></td>
+                        <td><?php echo $cnt['per_previous']; ?></td>
+                        <td><?php echo $cnt['per_current']; ?></td>
+                        <td><?php echo $cnt['pf_improvement']; ?></td>
+                        <td><?php echo $cnt['highlights']; ?></td>
                         <td><?php echo date('d-m-Y', strtotime($cnt['doj'])); ?></td>
-                        <td><?php echo $cnt['address']; ?></td>
-                        <td><?php echo $cnt['city']; ?></td>
-                        <td><?php echo $cnt['state']; ?></td>
-                        <td><?php echo $cnt['country']; ?></td>
                         <td>
-                          <a href="<?php echo base_url(); ?>edit-staff/<?php echo $cnt['id']; ?>" class="btn btn-success">Edit</a>
-                          <a href="<?php echo base_url(); ?>delete-staff/<?php echo $cnt['id']; ?>" class="btn btn-danger">Delete</a>
+                          <a href="<?php echo base_url(); ?>edit-performance/<?php echo $cnt['id']; ?>" class="btn btn-success">Edit</a>
                         </td>
                       </tr>
                     <?php 
